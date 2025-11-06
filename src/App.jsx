@@ -1,8 +1,6 @@
 import React from 'react';
-import BackgroundDecor from './components/BackgroundDecor';
-import CompanyHeader from './components/CompanyHeader';
-import PhotoFrame from './components/PhotoFrame';
-import EmployeeInfo from './components/EmployeeInfo';
+import HologramHero from './components/HologramHero';
+import IdCard from './components/IdCard';
 
 function App() {
   // Inline SVG portrait to match: man wearing a yellow T-shirt and a checkered shirt
@@ -39,35 +37,46 @@ function App() {
   const photoSrc = `data:image/svg+xml;utf8,${portraitSvg}`;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-emerald-50 p-6">
-      <div className="relative w-full max-w-md">
-        <BackgroundDecor />
+    <div className="min-h-screen w-full bg-slate-950">
+      {/* Hero with holographic Spline scene */}
+      <HologramHero />
 
-        {/* ID Card */}
-        <div className="relative bg-white rounded-3xl shadow-2xl ring-1 ring-emerald-900/10 p-6 backdrop-blur overflow-hidden">
-          <div className="flex items-start justify-between mb-4">
-            <CompanyHeader />
-            <span className="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-1 rounded-md border border-emerald-200">Employee ID Card</span>
+      {/* ID Card section */}
+      <section className="relative -mt-10 sm:-mt-16 md:-mt-20 pb-16 sm:pb-20 md:pb-24">
+        <div className="mx-auto max-w-6xl px-4 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          <div className="order-2 lg:order-1">
+            <div className="mx-auto max-w-sm">
+              <IdCard
+                name="Amlan Kumar Nayak"
+                designation="Software Developer"
+                employeeId="ID-AURO017"
+                photoSrc={photoSrc}
+              />
+            </div>
+            <p className="mt-4 text-center text-xs text-slate-400">
+              Premium PVC | RFID Ready | Anti-tamper holographic overlay
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-5">
-            <PhotoFrame src={photoSrc} alt="Employee portrait" />
-            <EmployeeInfo
-              name="Amlan Kumar Nayak"
-              designation="Software Developer"
-              employeeId="ID-AURO017"
-            />
+          <div className="order-1 lg:order-2 flex flex-col items-start justify-center gap-4 text-left">
+            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-500/10 px-3 py-1 text-[11px] font-medium tracking-wide text-emerald-300/90 backdrop-blur">
+              AUROVIS GLOBAL PVT LTD
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+              Professional Identification, Elevated
+            </h2>
+            <p className="max-w-prose text-sm sm:text-base text-slate-300/90">
+              This card combines a modern fintech look with robust security. The 3D hologram confirms authenticity,
+              while the clean layout keeps essential identity details front and center.
+            </p>
+            <ul className="mt-2 space-y-1.5 text-sm text-slate-300/90 list-disc pl-5">
+              <li>Holographic verification with real-time depth</li>
+              <li>Readable typography and clear hierarchy</li>
+              <li>Optimized for print and digital presentations</li>
+            </ul>
           </div>
-
-          {/* Bottom band for emphasis */}
-          <div className="mt-6 h-2 w-full rounded-full bg-gradient-to-r from-emerald-600 via-green-500 to-emerald-700" />
         </div>
-
-        {/* 3D Model hint */}
-        <div className="mt-4 text-center text-xs text-emerald-900/80">
-          3D idea: Use Three.js for a smooth rotating card with a subtle holographic shine.
-        </div>
-      </div>
+      </section>
     </div>
   );
 }
